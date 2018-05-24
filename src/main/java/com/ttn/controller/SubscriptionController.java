@@ -22,6 +22,7 @@ public class SubscriptionController {
     SendInvitationOfTopicService sendInvitationOfTopicService;
     @Autowired
     SubscribeToTopicDao subscribeToTopicDao;
+
     @RequestMapping(value = "/sendSubscriptionInvitation",method = RequestMethod.POST)
     public @ResponseBody String sendInvitation(@RequestParam("emailofuser") String email,@RequestParam("tname") String topicName)
     {

@@ -33,7 +33,7 @@
                 <form role="form" action="/sendSubscriptionInvitation" id="sendSubscriptionInvitaition" method="post">
 
                     <div class="form-group">
-                        <label for="userEmail">Email *</label>
+                        <label for="userEmail">Email * dfdsf</label>
                         <input class="form-control" type="email" placeholder="Enter Email Id"  id="userEmail" name="emailofuser" required/>
                     </div>
 

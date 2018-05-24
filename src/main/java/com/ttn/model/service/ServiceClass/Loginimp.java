@@ -19,8 +19,7 @@ public class Loginimp implements LoginService {
     @Autowired
     public Login login;
     public List<User> authenticationservice(User user) {
-
         List<User> list=loginAuthentication.Authenticate(user);
-   return list;
+        return list;
     }
 }
