@@ -23,6 +23,7 @@
     <link href="${pageContext.request.contextPath}/resources/newcss/daterangepicker.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/newcss/loginutil.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/newcss/loginmain.css" rel="stylesheet"/>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
     <%--<link href="${pageContext.request.contextPath}/resources/newcss/toastr.min.css" rel="stylesheet"/>--%>
     <script>
         document.documentElement.className = 'js';
@@ -67,44 +68,21 @@
         <div class="deco deco--title">2018 ART PRODUCTIONS</div>
     </div>
     <!-- Related demos -->
-    <section class="content content--related">
+    <section id="otpdiv" class="content content--related">
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33" style="padding-top: 40px;">
-                    <form id="loginForm" class="login100-form validate-form flex-sb flex-w" action="/loginProcess" method="post">
-                        <span class="login100-form-title p-b-53" style="padding-bottom: 30px;">Sign In With</span>
-                        <a href="#" class="btn-face m-b-20" style="margin-bottom: 0; height:50px">
-                            <img src="${pageContext.request.contextPath}/resources/images/icon-facebook.png" width="40px" alt="facebook">
-                            Facebook
-                        </a>
-                        <a href="#" class="btn-google m-b-20" style="margin-bottom: 0; height:50px">
-                            <img src="${pageContext.request.contextPath}/resources/images/icon-google.png" alt="google">
-                            Google
-                        </a>
-                        <div style="text-align: center; width: 100%; padding-top: 20px">
-                            <span class="txt1">Or Login Manually</span>
-                        </div>
+                    <form class="login100-form validate-form flex-sb flex-w" action="/sendverificationcode" id="sendOTPForm" method="post">
+                        <span class="login100-form-title p-b-53" style="padding-bottom: 30px;">Send Verification Code</span>
                         <div class="p-t-31 p-b-9">
-                            <span class="txt1">Username</span>
+                            <span class="txt1">Email *</span>
                         </div>
-                        <div class="wrap-input100 validate-input" data-validate="Username is required">
-                            <input class="input100" type="text" id="username" name="username" style="height:50px">
-                            <span class="focus-input100"></span>
-                        </div>
-                        <div class="p-t-13 p-b-9" style="margin-top: 18px">
-                            <span class="txt1">Password</span>
-                            <a href="/resetPassword" class="txt2 bo1 m-l-5">Forgot?</a>
-                        </div>
-                        <div class="wrap-input100 validate-input" data-validate="Password is required">
-                            <input class="input100" type="password" id="password" name="password" style="height:50px">
+                        <div class="wrap-input100 validate-input" data-validate="Email is required">
+                            <input class="input100" type="text" placeholder="Enter Your Email To Reset Your Password" id="EmailOfUser" name="useremailid" style="height:50px" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div class="container-login100-form-btn m-t-17" style="height:50px; margin-top: 30px;">
-                            <button class="login100-form-btn" type="submit">Sign In</button>
-                        </div>
-                        <div class="w-full text-center p-t-55" style="padding-top: 30px">
-                            <span class="txt2" >Not a member?</span>
-                            <a href="/signup" class="txt2 bo1">Sign up now</a>
+                            <button class="login100-form-btn" type="submit" id="sendverificationcode">Get Verification Code</button>
                         </div>
                     </form>
                 </div>
@@ -114,28 +92,6 @@
 </main>
 <script src="${pageContext.request.contextPath}/resources/newjs/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/newjs/notify/toastr.min.js"></script>
-<%--<div th:if="${param.error}">
-    <script>
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": true,
-            "progressBar": false,
-            "positionClass": "toast-top-center",
-            "preventDuplicates": true,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-        toastr["error"]("An error occurred while logging in");
-    </script>
-</div>--%>
 <script src="${pageContext.request.contextPath}/resources/newjs/imagesloaded.pkgd.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/newjs/anime.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/newjs/scrollMonitor.js"></script>

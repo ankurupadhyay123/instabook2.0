@@ -71,6 +71,12 @@ public class LoginController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/resetPassword")
+    public ModelAndView showPasswordReset() {
+        ModelAndView modelAndView = new ModelAndView("newSendOTP");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
     public ModelAndView loginProcess(@ModelAttribute User user, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
@@ -167,9 +173,7 @@ public class LoginController {
             return "user name available";
         } else {
             return "user name not available";
-
         }
-
     }
 
     @RequestMapping(value = "/uniqueemail", method = RequestMethod.POST)
@@ -180,26 +184,29 @@ public class LoginController {
         } else {
             return "email id available";
         }
-
-
     }
 
     @RequestMapping(value = "/sendverificationcode", method = RequestMethod.POST)
     public @ResponseBody
-    String sendVerificationcode(@ModelAttribute ForgotPasswordVerification forgotPasswordVerification, HttpServletResponse response) throws IOException {
+    ModelAndView sendVerificationcode(@ModelAttribute ForgotPasswordVerification forgotPasswordVerification, HttpServletResponse response) throws IOException {
 
         if (sendPasswordVerificationCodeService.checkemailid(forgotPasswordVerification.getUseremailid())) {
-            return sendPasswordVerificationCodeService.sendVerificationCode(forgotPasswordVerification.getUseremailid());
+            sendPasswordVerificationCodeService.sendVerificationCode(forgotPasswordVerification.getUseremailid());
+            ModelAndView modelAndView = new ModelAndView("newPasswordReset");
+            return modelAndView;
         } else {
-            return "email doest not exist in our database";
+            //return "email doest not exist in our database";
+            ModelAndView modelAndView = new ModelAndView("newSendOTP");
+            return modelAndView;
         }
     }
 
     @RequestMapping(value = "/updatepassword", method = RequestMethod.POST)
-    public void updatePassword(String useremailid, String password, String verificationcode,
+    public ModelAndView updatePassword(String useremailid, String password, String verificationcode,
                                HttpServletResponse response, HttpServletRequest request) throws IOException {
-
-        response.getWriter().write(forgotPasswordService.updatePassword(request.getParameter("email"), request.getParameter("password"), request.getParameter("verificationcode")));
+        forgotPasswordService.updatePassword(request.getParameter("email"), request.getParameter("password"), request.getParameter("verificationcode"));
+        ModelAndView modelAndView=new ModelAndView("newwelcome");
+        return modelAndView;
     }
 
 }

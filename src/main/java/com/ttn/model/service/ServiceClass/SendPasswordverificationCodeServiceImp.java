@@ -25,8 +25,8 @@ public class SendPasswordverificationCodeServiceImp implements SendPasswordVerif
 
     public String sendVerificationCode(String useremail) {
         String host = "localhost";
-        final String user = "vermasahil269@gmail.com";//change accordingly
-        final String password = "sahil@21";//change accordingly
+        final String user = "noreply.linksharing@gmail.com";//change accordingly
+        final String password = "7065570755";//change accordingly
 
         String to = useremail;//change accordingly
 
